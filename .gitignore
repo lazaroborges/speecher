@@ -1,5 +1,17 @@
-ggml.medium.bin
 
+# Large model files
 *.bin
-speecher/ggml-medium.bin
-speecher/Resources/models/
+**/*.bin
+ggml-*.bin
+Resources/models/
+
+# Build artifacts
+build/
+*.dSYM/
+*.xcframework/
+DerivedData/
+
+# Xcode
+*.xcuserstate
+*.xcuserdatad/
+.DS_Store
