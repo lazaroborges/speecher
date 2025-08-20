@@ -17,6 +17,9 @@ struct ContentView: View {
                         HStack {
                             Button("Record Again") {
                                 showFullScreenText = false
+                                Task {
+                                    await whisperState.toggleRecord()
+                                }
                             }
                             .foregroundColor(.blue)
                             .padding()
