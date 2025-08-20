@@ -2,76 +2,99 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var whisperState = WhisperState()
+    @State private var showFullScreenText = false
     
     var body: some View {
-        VStack(spacing: 20) {
-            Text("Speech Recognition")
-                .font(.largeTitle)
-                .fontWeight(.bold)
-                .padding(.top, 40)
-            
-            // Recording status indicator
-            HStack {
-                Circle()
-                    .fill(whisperState.isRecording ? Color.red : Color.gray)
-                    .frame(width: 12, height: 12)
-                Text(whisperState.isRecording ? "Recording..." : "Ready")
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
-            }
-            
-            // Record button
-            Button(action: {
-                Task {
-                    await whisperState.toggleRecord()
-                }
-            }) {
+        ZStack {
+            if showFullScreenText && !whisperState.transcribedText.isEmpty {
+                // Full screen transcribed text view
                 ZStack {
-                    Circle()
-                        .fill(whisperState.isRecording ? Color.red : Color.blue)
-                        .frame(width: 100, height: 100)
+                    Color.black
+                        .ignoresSafeArea()
                     
-                    Image(systemName: whisperState.isRecording ? "stop.fill" : "mic.fill")
-                        .font(.system(size: 40))
-                        .foregroundColor(.white)
+                    VStack {
+                        // Close button and record again button
+                        HStack {
+                            Button("Record Again") {
+                                showFullScreenText = false
+                            }
+                            .foregroundColor(.blue)
+                            .padding()
+                            
+                            Spacer()
+                            
+                            Button("Close") {
+                                showFullScreenText = false
+                            }
+                            .foregroundColor(.white)
+                            .padding()
+                        }
+                        
+                        Spacer()
+                        
+                        // Large transcribed text
+                        ScrollView {
+                            Text(whisperState.transcribedText)
+                                .font(.system(size: min(UIScreen.main.bounds.width / 15, 60), weight: .medium))
+                                .foregroundColor(.white)
+                                .multilineTextAlignment(.center)
+                                .padding()
+                        }
+                        
+                        Spacer()
+                    }
                 }
-            }
-            .disabled(!whisperState.canTranscribe)
-            .padding()
-            
-            // Transcribed text display
-            VStack(alignment: .leading, spacing: 10) {
-                Text("Transcription:")
-                    .font(.headline)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                
-                ScrollView {
-                    Text(whisperState.transcribedText.isEmpty ? "Tap the microphone to start recording" : whisperState.transcribedText)
-                        .font(.body)
-                        .foregroundColor(whisperState.transcribedText.isEmpty ? .secondary : .primary)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding()
-                        .background(Color.gray.opacity(0.1))
-                        .cornerRadius(10)
+            } else {
+                // Simplified recording interface
+                VStack {
+                    Spacer()
+                    
+                    // Recording button container
+                    VStack(spacing: 20) {
+                        // Recording status indicator (only show when recording)
+                        if whisperState.isRecording {
+                            HStack {
+                                Circle()
+                                    .fill(Color.red)
+                                    .frame(width: 12, height: 12)
+                                Text("Recording...")
+                                    .font(.subheadline)
+                                    .foregroundColor(.secondary)
+                            }
+                        }
+                        
+                        // Record button
+                        Button(action: {
+                            Task {
+                                await whisperState.toggleRecord()
+                            }
+                        }) {
+                            ZStack {
+                                Circle()
+                                    .fill(whisperState.isRecording ? Color.red : Color.blue)
+                                    .frame(width: 120, height: 120)
+                                
+                                Image(systemName: whisperState.isRecording ? "stop.fill" : "mic.fill")
+                                    .font(.system(size: 50))
+                                    .foregroundColor(.white)
+                            }
+                        }
+                        .disabled(!whisperState.canTranscribe)
+                    }
+                    .padding()
+                    
+                    Spacer()
                 }
-                .frame(maxHeight: 300)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(Color(UIColor.systemBackground))
             }
-            .padding(.horizontal)
-            
-            Spacer()
-            
-            // Model status
-            HStack {
-                Image(systemName: whisperState.isModelLoaded ? "checkmark.circle.fill" : "xmark.circle.fill")
-                    .foregroundColor(whisperState.isModelLoaded ? .green : .red)
-                Text(whisperState.isModelLoaded ? "Model loaded" : "Model not loaded")
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-            }
-            .padding(.bottom)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color(UIColor.systemBackground))
+        .onChange(of: whisperState.isRecording) { oldValue, newValue in
+            // When recording stops and we have transcribed text, show full screen
+            if oldValue == true && newValue == false && !whisperState.transcribedText.isEmpty {
+                showFullScreenText = true
+            }
+        }
     }
 }
 
