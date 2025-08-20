@@ -1,2 +1,5 @@
 ggml.medium.bin
 
+*.bin
+speecher/ggml-medium.bin
+speecher/Resources/models/
