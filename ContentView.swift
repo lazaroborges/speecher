@@ -15,7 +15,7 @@ struct ContentView: View {
                     VStack {
                         // Close button and record again button
                         HStack {
-                            Button("Record Again") {
+                            Button("Gravar Novamente") {
                                 showFullScreenText = false
                                 Task {
                                     await whisperState.toggleRecord()
@@ -26,7 +26,7 @@ struct ContentView: View {
                             
                             Spacer()
                             
-                            Button("Close") {
+                            Button("Limpar") {
                                 showFullScreenText = false
                             }
                             .foregroundColor(.white)
