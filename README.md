@@ -206,4 +206,4 @@ For edge computing issues and questions:
 ---
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-**Made with ❤️ in Brazil for the deaf and hard of hearing community using computing - Contributions welcome at PIX 05788451728**
+**Made with ❤️ in Brazil for the deaf and hard of hearing community using computing**
