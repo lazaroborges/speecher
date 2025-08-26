@@ -20,7 +20,7 @@
 
 The app leverages edge computing principles with:
 - **SwiftUI** - Modern iOS user interface
-- **Whisper.cpp** - Local edge speech recognition engine
+- **Whisper.cpp** - Local edge speech recognition engine - the small size model works offers a good balance of size (500MB) with speed (tested in iPhone PRO MAX 14)
 - **AVFoundation** - On-device audio recording and processing
 - **Metal** - GPU acceleration for edge model inference
 - **Local Storage** - Edge model deployment with no external dependencies
@@ -29,7 +29,7 @@ The app leverages edge computing principles with:
 
 - iOS 16.4+ (iPhone 13+) / macOS 13.3+
 - Xcode 15+
-- ~1.5GB edge storage space for the medium Whisper model
+- ~500MB edge storage space for the small Whisper model
 - Microphone permissions
 
 ## Setup Instructions
@@ -54,21 +54,21 @@ This will create the necessary framework files optimized for edge computing.
 
 ### 3. Download and Deploy the Edge Model
 
-Download the Portuguese-optimized medium model for edge inference:
+Download the Portuguese-optimized model for edge inference in the desired size:
 
 ```bash
 cd whisper.cpp/models
-./download-ggml-model.sh medium
+./download-ggml-model.sh <model_size>
 ```
 
-This will download `ggml-medium.bin` (~1.4GB) for local edge deployment.
+This will download `ggml-<model_size>.bin` (~1.4GB) for local edge deployment.
 
 ### 4. Add Edge Model to Xcode Project
 
 1. Open `speecher.xcodeproj` in Xcode
 2. Right-click on the `Resources/models/` folder in the project navigator
 3. Select "Add Files to 'speecher'"
-4. Navigate to `whisper.cpp/models/` and select `ggml-medium.bin`
+4. Navigate to `whisper.cpp/models/` and select `ggml-<model_size>.bin`
 5. Ensure "Add to target: speecher" is checked
 6. Click "Add"
 
@@ -119,7 +119,7 @@ cd whisper.cpp/models
 ./download-ggml-model.sh small
 
 # Update WhisperState.swift to use the new edge model
-# Change "ggml-medium.bin" to "ggml-small.bin" in modelUrl
+# Change "ggml-<model_size>.bin" to "ggml-small.bin" in modelUrl
 ```
 
 ## Edge Computing File Structure
@@ -134,7 +134,7 @@ speecher/
 ├── speecherApp.swift         # Edge app entry point
 └── Resources/
     └── models/               # Edge model storage
-        └── ggml-medium.bin   # Deployed edge model file
+        └── ggml-<model_size>.bin   # Deployed edge model file
 ```
 
 ## Edge Configuration
@@ -162,8 +162,8 @@ let maxThreads = max(1, min(8, cpuCount() - 2))
 ## Troubleshooting Edge Deployment
 
 ### Edge Model Not Loading
-- Verify `ggml-medium.bin` is properly deployed in the app bundle
-- Check edge model file size (~1.4GB for medium model)
+- Verify `ggml-<model_size>.bin` is properly deployed in the app bundle
+- Check edge model file size (~500MB for small model)
 - Ensure edge model is added to Xcode target
 
 ### Poor Edge Recognition Quality
