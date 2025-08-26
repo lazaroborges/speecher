@@ -1,0 +1,59 @@
+/* 
+  Localizable.strings
+  speecher - English
+*/
+
+/* Recording interface */
+"recording_status" = "Recording...";
+"language_label" = "Language";
+
+/* Full screen view buttons */
+"record_again" = "Record Again";
+"clear" = "Clear";
+
+/* Language names */
+"language_english" = "English";
+"language_portuguese" = "Portuguese";
+"language_spanish" = "Spanish";
+"language_french" = "French";
+"language_german" = "German";
+"language_italian" = "Italian";
+"language_japanese" = "Japanese";
+"language_korean" = "Korean";
+"language_chinese" = "Chinese";
+"language_russian" = "Russian";
+"language_arabic" = "Arabic";
+"language_hindi" = "Hindi";
+"language_turkish" = "Turkish";
+"language_polish" = "Polish";
+"language_dutch" = "Dutch";
+"language_swedish" = "Swedish";
+"language_danish" = "Danish";
+"language_norwegian" = "Norwegian";
+"language_finnish" = "Finnish";
+"language_czech" = "Czech";
+"language_hungarian" = "Hungarian";
+"language_romanian" = "Romanian";
+"language_ukrainian" = "Ukrainian";
+"language_greek" = "Greek";
+"language_bulgarian" = "Bulgarian";
+"language_croatian" = "Croatian";
+"language_serbian" = "Serbian";
+"language_slovak" = "Slovak";
+"language_slovenian" = "Slovenian";
+"language_estonian" = "Estonian";
+"language_latvian" = "Latvian";
+"language_lithuanian" = "Lithuanian";
+"language_catalan" = "Catalan";
+"language_vietnamese" = "Vietnamese";
+"language_thai" = "Thai";
+"language_indonesian" = "Indonesian";
+"language_malay" = "Malay";
+"language_hebrew" = "Hebrew";
+"language_persian" = "Persian";
+"language_urdu" = "Urdu";
+"language_bengali" = "Bengali";
+"language_tamil" = "Tamil";
+"language_telugu" = "Telugu";
+"language_malayalam" = "Malayalam";
+"language_auto_detect" = "Auto-detect";

@@ -1,4 +1,5 @@
 import SwiftUI
+import Foundation
 
 struct ContentView: View {
     @StateObject var whisperState = WhisperState()
@@ -15,7 +16,7 @@ struct ContentView: View {
                     VStack {
                         // Close button and record again button
                         HStack {
-                            Button("Gravar Novamente") {
+                            Button("record_again".localized) {
                                 showFullScreenText = false
                                 Task {
                                     await whisperState.toggleRecord()
@@ -26,7 +27,7 @@ struct ContentView: View {
                             
                             Spacer()
                             
-                            Button("Limpar") {
+                            Button("clear".localized) {
                                 showFullScreenText = false
                             }
                             .foregroundColor(.white)
@@ -60,7 +61,7 @@ struct ContentView: View {
                                 Circle()
                                     .fill(Color.red)
                                     .frame(width: 12, height: 12)
-                                Text("Recording...")
+                                Text("recording_status".localized)
                                     .font(.subheadline)
                                     .foregroundColor(.secondary)
                             }
@@ -90,7 +91,7 @@ struct ContentView: View {
                     
                     // Language selection dropdown at the bottom
                     VStack(spacing: 12) {
-                        Text("Language / Idioma")
+                        Text("language_label".localized)
                             .font(.caption)
                             .foregroundColor(.secondary)
                         
