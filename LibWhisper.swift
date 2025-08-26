@@ -20,26 +20,53 @@ actor WhisperContext {
         whisper_free(context)
     }
 
-    func fullTranscribe(samples: [Float]) {
+    func fullTranscribe(samples: [Float], language: String = "pt") {
         // Leave 2 processors free (i.e. the high-efficiency cores).
         let maxThreads = max(1, min(8, cpuCount() - 2))
         print("Selecting \(maxThreads) threads")
         var params = whisper_full_default_params(WHISPER_SAMPLING_GREEDY)
-        "pt".withCString { pt in
-            // Adapted from whisper.objc - configured for Portuguese
+        
+        let languageCode = language == "auto" ? nil : language
+        
+        if let languageCode = languageCode {
+            languageCode.withCString { langPtr in
+                // Adapted from whisper.objc - configured for the selected language
+                params.print_realtime   = true
+                params.print_progress   = false
+                params.print_timestamps = true
+                params.print_special    = false
+                params.translate        = false
+                params.language         = langPtr
+                params.n_threads        = Int32(maxThreads)
+                params.offset_ms        = 0
+                params.no_context       = true
+                params.single_segment   = false
+
+                whisper_reset_timings(context)
+                print("About to run whisper_full with language: \(languageCode)")
+                samples.withUnsafeBufferPointer { samples in
+                    if (whisper_full(context, params, samples.baseAddress, Int32(samples.count)) != 0) {
+                        print("Failed to run the model")
+                    } else {
+                        whisper_print_timings(context)
+                    }
+                }
+            }
+        } else {
+            // Auto-detect language
             params.print_realtime   = true
             params.print_progress   = false
             params.print_timestamps = true
             params.print_special    = false
             params.translate        = false
-            params.language         = pt  // Changed from "en" to "pt" for Portuguese
+            params.language         = nil  // Auto-detect
             params.n_threads        = Int32(maxThreads)
             params.offset_ms        = 0
             params.no_context       = true
             params.single_segment   = false
 
             whisper_reset_timings(context)
-            print("About to run whisper_full")
+            print("About to run whisper_full with auto-detect language")
             samples.withUnsafeBufferPointer { samples in
                 if (whisper_full(context, params, samples.baseAddress, Int32(samples.count)) != 0) {
                     print("Failed to run the model")

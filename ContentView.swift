@@ -87,6 +87,47 @@ struct ContentView: View {
                     .padding()
                     
                     Spacer()
+                    
+                    // Language selection dropdown at the bottom
+                    VStack(spacing: 12) {
+                        Text("Language / Idioma")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                        
+                        Menu {
+                            ForEach(Language.allCases, id: \.id) { language in
+                                Button(action: {
+                                    whisperState.selectedLanguage = language
+                                }) {
+                                    HStack {
+                                        Text(language.name)
+                                        if language.id == whisperState.selectedLanguage.id {
+                                            Spacer()
+                                            Image(systemName: "checkmark")
+                                        }
+                                    }
+                                }
+                            }
+                        } label: {
+                            HStack {
+                                Text(whisperState.selectedLanguage.name)
+                                    .font(.body)
+                                    .foregroundColor(.primary)
+                                
+                                Spacer()
+                                
+                                Image(systemName: "chevron.down")
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
+                            }
+                            .padding(.horizontal, 16)
+                            .padding(.vertical, 12)
+                            .background(Color(UIColor.secondarySystemBackground))
+                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                        }
+                        .frame(maxWidth: 280)
+                    }
+                    .padding(.bottom, 30)
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(Color(UIColor.systemBackground))
@@ -95,6 +136,12 @@ struct ContentView: View {
         .onChange(of: whisperState.isRecording) { oldValue, newValue in
             // When recording stops and we have transcribed text, show full screen
             if oldValue == true && newValue == false && !whisperState.transcribedText.isEmpty {
+                showFullScreenText = true
+            }
+        }
+        .onChange(of: whisperState.transcribedText) { oldValue, newValue in
+            // When transcription completes (text becomes non-empty) and we're not recording, show full screen
+            if !newValue.isEmpty && !whisperState.isRecording {
                 showFullScreenText = true
             }
         }

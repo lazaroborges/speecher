@@ -8,6 +8,11 @@ class WhisperState: NSObject, ObservableObject, AVAudioRecorderDelegate {
     @Published var transcribedText = ""
     @Published var isRecording = false
     @Published var canTranscribe = false
+    @Published var selectedLanguage: Language = Language.defaultLanguage {
+        didSet {
+            saveLanguagePreference()
+        }
+    }
     
     private var whisperContext: WhisperContext?
     private var recorder = Recorder()
@@ -37,7 +42,19 @@ class WhisperState: NSObject, ObservableObject, AVAudioRecorderDelegate {
     
     override init() {
         super.init()
+        loadLanguagePreference()
         loadModel()
+    }
+    
+    private func loadLanguagePreference() {
+        let savedLanguageCode = UserDefaults.standard.string(forKey: "selectedLanguageCode") ?? "pt"
+        selectedLanguage = Language.allCases.first { $0.code == savedLanguageCode } ?? Language.defaultLanguage
+        print("Loaded language preference: \(selectedLanguage.name) (\(selectedLanguage.code))")
+    }
+    
+    private func saveLanguagePreference() {
+        UserDefaults.standard.set(selectedLanguage.code, forKey: "selectedLanguageCode")
+        print("Saved language preference: \(selectedLanguage.name) (\(selectedLanguage.code))")
     }
     
     func loadModel() {
@@ -74,7 +91,7 @@ class WhisperState: NSObject, ObservableObject, AVAudioRecorderDelegate {
             canTranscribe = false
             let data = try decodeWaveFile(url)
             
-            await whisperContext.fullTranscribe(samples: data)
+            await whisperContext.fullTranscribe(samples: data, language: selectedLanguage.code)
             let text = await whisperContext.getTranscription()
             
             // Update the transcribed text on the main thread

@@ -1,5 +1,9 @@
 # Speecher - Edge Voice to Text Transcriber
 
+## Download
+[![Download on the App Store](https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg)](https://apps.apple.com/gb/app/speecher-off/id6751341974)
+
+
 **Speecher** is an edge-native voice-to-text transcription application designed to facilitate communication between speaking individuals and those who are deaf or hard of hearing. The app runs entirely on-device using local Whisper models for real-time speech recognition with zero cloud dependency.
 
 ## Features

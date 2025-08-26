@@ -26,11 +26,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		ED4FE64D2E5BE65D001E15F0 /* speecher.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = speecher.xcodeproj; sourceTree = "<group>"; };
+		ED56A5E62E5D2E4600680117 /* speecher.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = speecher.xcodeproj; sourceTree = "<group>"; };
 		ED61F74B2E56609F000F77D1 /* speecher.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = speecher.xcodeproj; sourceTree = "<group>"; };
 		ED6AB8262E576CAA008E82B7 /* speecher.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = speecher.xcodeproj; sourceTree = "<group>"; };
 		ED6AB84F2E57770D008E82B7 /* speecher.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = speecher.xcodeproj; sourceTree = "<group>"; };
 		ED7CA7352E4F84A10040FE78 /* speecher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = speecher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED7CA7652E4F8AF40040FE78 /* whisper.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = whisper.xcframework; path = "../whisper.cpp/build-apple/whisper.xcframework"; sourceTree = "<group>"; };
+		EDEC57822E5BE190003DE0F9 /* speecher.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = speecher.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -52,6 +55,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ED4FE6502E5BE65D001E15F0 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		ED56A5E92E5D2E4600680117 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
 		ED61F74E2E56609F000F77D1 /* Products */ = {
 			isa = PBXGroup;
 			name = Products;
@@ -90,6 +103,11 @@
 				ED7CA7652E4F8AF40040FE78 /* whisper.xcframework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EDEC57852E5BE190003DE0F9 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,16 +165,28 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = ED6AB8522E57770D008E82B7 /* Products */;
-					ProjectRef = ED6AB84F2E57770D008E82B7 /* speecher.xcodeproj */;
-				},
-				{
-					ProductGroup = ED6AB8292E576CAA008E82B7 /* Products */;
-					ProjectRef = ED6AB8262E576CAA008E82B7 /* speecher.xcodeproj */;
+					ProductGroup = EDEC57852E5BE190003DE0F9 /* Products */;
+					ProjectRef = EDEC57822E5BE190003DE0F9 /* speecher.xcodeproj */;
 				},
 				{
 					ProductGroup = ED61F74E2E56609F000F77D1 /* Products */;
 					ProjectRef = ED61F74B2E56609F000F77D1 /* speecher.xcodeproj */;
+				},
+				{
+					ProductGroup = ED6AB8522E57770D008E82B7 /* Products */;
+					ProjectRef = ED6AB84F2E57770D008E82B7 /* speecher.xcodeproj */;
+				},
+				{
+					ProductGroup = ED56A5E92E5D2E4600680117 /* Products */;
+					ProjectRef = ED56A5E62E5D2E4600680117 /* speecher.xcodeproj */;
+				},
+				{
+					ProductGroup = ED4FE6502E5BE65D001E15F0 /* Products */;
+					ProjectRef = ED4FE64D2E5BE65D001E15F0 /* speecher.xcodeproj */;
+				},
+				{
+					ProductGroup = ED6AB8292E576CAA008E82B7 /* Products */;
+					ProjectRef = ED6AB8262E576CAA008E82B7 /* speecher.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -310,7 +340,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = speecher.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = WX9X44QVKL;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -328,11 +358,11 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 1;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.speecher.speecher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
@@ -353,7 +383,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = speecher.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = WX9X44QVKL;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -371,11 +401,11 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 1;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.speecher.speecher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
