@@ -10,6 +10,12 @@
 /* Full screen view buttons */
 "record_again" = "Grabar de Nuevo";
 "clear" = "Limpiar";
+"close" = "Cerrar";
+
+/* Typing view */
+"Type and display" = "Escribir y mostrar";
+"done" = "Hecho";
+"display" = "Mostrar";
 
 /* Language names */
 "language_english" = "Inglés";

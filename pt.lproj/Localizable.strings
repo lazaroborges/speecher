@@ -10,6 +10,12 @@
 /* Full screen view buttons */
 "record_again" = "Gravar Novamente";
 "clear" = "Limpar";
+"close" = "Fechar";
+
+/* Typing view */
+"Type and display" = "Digite e exiba";
+"done" = "Concluído";
+"display" = "Exibir";
 
 /* Language names */
 "language_english" = "Inglês";
