@@ -33,6 +33,7 @@
 		ED6AB84F2E57770D008E82B7 /* speecher.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = speecher.xcodeproj; sourceTree = "<group>"; };
 		ED7CA7352E4F84A10040FE78 /* speecher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = speecher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED7CA7652E4F8AF40040FE78 /* whisper.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = whisper.xcframework; path = "../whisper.cpp/build-apple/whisper.xcframework"; sourceTree = "<group>"; };
+		EDB42EAB2E67850900F5A73E /* speecher.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = speecher.xcodeproj; sourceTree = "<group>"; };
 		EDEC57822E5BE190003DE0F9 /* speecher.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = speecher.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,6 +106,11 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		EDB42EAF2E67850900F5A73E /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
 		EDEC57852E5BE190003DE0F9 /* Products */ = {
 			isa = PBXGroup;
 			name = Products;
@@ -171,24 +177,28 @@
 					ProjectRef = EDEC57822E5BE190003DE0F9 /* speecher.xcodeproj */;
 				},
 				{
-					ProductGroup = ED61F74E2E56609F000F77D1 /* Products */;
-					ProjectRef = ED61F74B2E56609F000F77D1 /* speecher.xcodeproj */;
+					ProductGroup = ED56A5E92E5D2E4600680117 /* Products */;
+					ProjectRef = ED56A5E62E5D2E4600680117 /* speecher.xcodeproj */;
 				},
 				{
 					ProductGroup = ED6AB8522E57770D008E82B7 /* Products */;
 					ProjectRef = ED6AB84F2E57770D008E82B7 /* speecher.xcodeproj */;
 				},
 				{
-					ProductGroup = ED56A5E92E5D2E4600680117 /* Products */;
-					ProjectRef = ED56A5E62E5D2E4600680117 /* speecher.xcodeproj */;
+					ProductGroup = ED6AB8292E576CAA008E82B7 /* Products */;
+					ProjectRef = ED6AB8262E576CAA008E82B7 /* speecher.xcodeproj */;
+				},
+				{
+					ProductGroup = EDB42EAF2E67850900F5A73E /* Products */;
+					ProjectRef = EDB42EAB2E67850900F5A73E /* speecher.xcodeproj */;
 				},
 				{
 					ProductGroup = ED4FE6502E5BE65D001E15F0 /* Products */;
 					ProjectRef = ED4FE64D2E5BE65D001E15F0 /* speecher.xcodeproj */;
 				},
 				{
-					ProductGroup = ED6AB8292E576CAA008E82B7 /* Products */;
-					ProjectRef = ED6AB8262E576CAA008E82B7 /* speecher.xcodeproj */;
+					ProductGroup = ED61F74E2E56609F000F77D1 /* Products */;
+					ProjectRef = ED61F74B2E56609F000F77D1 /* speecher.xcodeproj */;
 				},
 			);
 			projectRoot = "";
