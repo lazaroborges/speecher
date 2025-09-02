@@ -42,3 +42,4 @@ extension String {
         return LocalizationManager.shared.localizedString(key: self)
     }
 }
+
