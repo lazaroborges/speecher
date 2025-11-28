@@ -15,3 +15,5 @@ DerivedData/
 *.xcuserstate
 *.xcuserdatad/
 .DS_Store
+
+CLAUDE.md
