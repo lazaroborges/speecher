@@ -19,9 +19,15 @@ struct ContentView: View {
                 .tag(1)
         }
         .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+        .background(Color.black)
+        .ignoresSafeArea()
         .overlay(
             // Navigation indicators
             VStack {
+                if (currentTab == 0 && showFullScreenText) || (currentTab == 1 && showFullScreenTypedText) {
+                    Spacer()
+                }
+                
                 HStack {
                     Spacer()
                     HStack(spacing: 8) {
@@ -33,9 +39,13 @@ struct ContentView: View {
                             .frame(width: 8, height: 8)
                     }
                     .padding(.trailing, 20)
-                    .padding(.top, 50)
+                    .padding(.bottom, ((currentTab == 0 && showFullScreenText) || (currentTab == 1 && showFullScreenTypedText)) ? 50 : 0)
+                    .padding(.top, !((currentTab == 0 && showFullScreenText) || (currentTab == 1 && showFullScreenTypedText)) ? 60 : 0)
                 }
-                Spacer()
+                
+                if !((currentTab == 0 && showFullScreenText) || (currentTab == 1 && showFullScreenTypedText)) {
+                    Spacer()
+                }
             }
         )
     }
@@ -259,27 +269,27 @@ struct ContentView: View {
         ZStack {
             Color.black
                 .ignoresSafeArea()
-            
-            VStack {
+
+            VStack(spacing: 0) {
                 // Close button and record again button
                 HStack {
                     Button(currentTab == 0 ? "record_again".localized : "Type Again") {
                         onRecordAgain()
                     }
+                    .font(.body)
                     .foregroundColor(.blue)
-                    .padding()
-                    
+
                     Spacer()
-                    
+
                     Button("clear".localized) {
                         onClear()
                     }
+                    .font(.body)
                     .foregroundColor(.white)
-                    .padding()
                 }
-                
-                Spacer()
-                
+                .padding()
+                .padding(.top)
+
                 // Large text display
                 ScrollView {
                     Text(text)
@@ -288,9 +298,8 @@ struct ContentView: View {
                         .multilineTextAlignment(.center)
                         .padding()
                 }
-                
-                Spacer()
             }
+            .padding()
         }
     }
 }

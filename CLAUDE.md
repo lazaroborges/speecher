@@ -53,12 +53,6 @@ Open `speecher.xcodeproj` in Xcode and build/run normally (⌘+R). The project r
 - Outputs Linear PCM WAV format to temporary file
 - Handles iOS audio session activation/deactivation
 
-**StreamingRecorder.swift** - Real-time audio processing (experimental)
-- Uses AVAudioEngine with installTap for continuous audio capture
-- Implements chunk-based processing: 3s steps, 10s context window, 200ms overlap
-- Manual resampling from hardware rate (typically 48kHz) to 16kHz target
-- Provides `onAudioChunkReady` callback for integration with streaming transcription
-- Note: This is not currently integrated into the main UI (ContentView uses batch Recorder)
 
 **ContentView.swift** - SwiftUI interface with two-tab design
 - Tab 0: Voice-to-text with microphone button and language selector
